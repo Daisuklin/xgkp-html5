@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes" />
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true" />
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>推荐龟米红包</title>
+    <!--style base-->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+
+
+</head>
+<body>
+    <div class="receiveSucccessBox g-clr">
+        <dl>
+            <dd  class="content">
+                <section>
+                    <ul>
+                        <li class="receiveed msg ">仅限新用户领取</li>
+                        <li class="receiveed  lineHeightAuto displayNone">您已领取该红包 赶快使用吧~</li>
+                        <li class="receive  ok displayNone">
+                            <p>领取成功</p>
+                            <p></p>
+                            <p><span>5</span><sub>元</sub></p>
+                        </li>
+                        <!--<li>您已领取该红包 赶快使用吧~</li>-->
+                        <li class="submit">
+                            <button type="button" onclick="submitForm()" >使用红包</button>
+                        </li>
+                    </ul>
+                </section>
+            </dd>
+            <dd>
+                <footer>
+                    <h6>活动规则 :</h6>
+                    <p>每名新用户可领取一次满减红包，满10元即可使用， 满减红包支持龟米的实体门店皆可使用。</p>
+                </footer>
+            </dd>
+        </dl>
+    </div>
+
+    <script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/layer/mobile/layer.js"></script>
+    <script src="../../js/ejs/ejs_production.js"></script>
+    <script src="../../js/fastclick.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            new FastClick(document.body);
+        }, false);
+
+
+        function submitForm(){
+
+            layer.open({
+                content: '领取成功，下次获得龟米会直接到账'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }
+
+
+    </script>
+</body>
+</html>

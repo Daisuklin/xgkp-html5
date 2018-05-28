@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes" />
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true" />
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>推荐龟米红包</title>
+    <!--style base-->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+
+
+</head>
+<body>
+    <div class="receiveBox g-clr">
+        <div class="content">
+            <section>
+                <p>恭喜你获得</p>
+                <p></p>
+                <p><span>5</span><sub>元</sub></p>
+            </section>
+            <section>
+                <form>
+                    <ul>
+                        <li class="submit">
+                            <button type="button" onclick="submitForm()" >立刻领取</button>
+                        </li>
+                    </ul>
+                </form>
+            </section>
+            <section></section>
+        </div>
+        <footer>
+            <h6>活动规则 :</h6>
+            <p>每名新用户可领取一次满减红包，满10元即可使用， 满减红包支持龟米的实体门店皆可使用。</p>
+        </footer>
+
+    </div>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/layer/mobile/layer.js"></script>
+    <script src="../../js/ejs/ejs_production.js"></script>
+    <script src="../../js/fastclick.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            new FastClick(document.body);
+        }, false);
+        wx.config({
+            debug: false,
+            appId: 'wxf8b4f85f3a794e77',
+            timestamp: 1526886234,
+            nonceStr: 'I9vCIIX3kO9IUXzO',
+            signature: '7540a70a67c051a5ecc0ac585835097235219b62',
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'onMenuShareQZone',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onVoiceRecordEnd',
+                'playVoice',
+                'onVoicePlayEnd',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+        });
+        function sendSms(){
+            // wx.getLocation({
+            //     type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+            //     success: function (res) {
+            //         var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+            //         var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+            //         var speed = res.speed; // 速度，以米/每秒计
+            //         var accuracy = res.accuracy; // 位置精度
+            //     }
+            // });
+            layer.open({
+                content: '发送成功'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }
+        var layerObject=null;
+        function closeLayer(){
+            layer.close(layerObject)
+        }
+        function submitForm(){
+            // layer.open({
+            //     content: '领取成功，下次获得龟米会直接到账'
+            //     ,skin: 'msg'
+            //     ,time: 2 //2秒后自动关闭
+            // });
+            var isNewUser= true  //true 新用户 false旧用户
+
+            if(isNewUser){
+                showMobileValidata()
+            }else{
+
+            }
+        }
+
+        function showMobileValidata(){
+            var html = new EJS({url: '../../temp/validate/mobileValidate.ejs?d=' + new Date().getTime()}).render({})
+            layerObject=layer.open({
+                shadeClose:true,
+                type: 1,
+                content: html,
+                style:"border-radius: 5vw; -webkit-border-radius: 5vw;"
+            });
+        }
+    </script>
+</body>
+</html>

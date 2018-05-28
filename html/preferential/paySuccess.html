@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes" />
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true" />
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>龟米优惠</title>
+    <!--style base-->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+        .paySuccessBox >div.banner_img a img{
+            width: 100%;}
+    </style>
+
+
+</head>
+<body>
+    <div class="paySuccessBox g-clr">
+        <ul>
+            <li><a>龟米说明</a></li>
+            <li>支付成功</li>
+            <li><label>￥</label>60.00</li>
+            <li>本次获得 6 龟米</li>
+            <li>
+                <button onclick="showMobileValidata()">立即领取</button>
+            </li>
+            <li>下次支付可优惠6元</li>
+            <li>
+                <span>收款方</span>
+                <span>店铺名称</span>
+            </li>
+            <li>
+                <span>总额</span>
+                <span>￥60.00</span>
+                <del class="gray">￥60.00</del>
+            </li>
+            <li>
+                <span>优惠</span>
+                <span class="gray">龟米优惠￥0.00</span>
+                <span class="red">龟米优惠￥10.00</span>
+            </li>
+        </ul>
+        <div class="banner_img">
+            <a><img src="../../img/payment/paySuccess_footBanner.png"/></a>
+        </div>
+        <footer>
+            <img src="../../img/payment/foot_img.png"/>
+        </footer>
+
+    </div>
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/layer/mobile/layer.js"></script>
+    <script src="../../js/ejs/ejs_production.js"></script>
+    <!--<script src="../../js/fastclick.js"></script>-->
+    <script>
+        // window.addEventListener('load', function() {
+        //     new FastClick(document.body);
+        // }, false);
+        // alert(Math.random()*1048576)
+        // window.location.replace('http://bp1.yileyun.com/html/xgkp-html/html/preferential/paySuccess.html?random='+Math.random()*1048576)
+        var layerObject=null;
+        function closeLayer(){
+            layer.close(layerObject)
+        }
+
+        function submitForm(){
+            layer.close(layerObject)
+            layer.open({
+                content: '领取成功，下次获得龟米会直接到账'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }
+
+        function sendSms(){
+            window.location.replace('http://bp1.yileyun.com/html/xgkp-html/html/preferential/paySuccess.html?random='+Math.random()*1048576)
+        }
+
+        function showMobileValidata(){
+            var html = new EJS({url: '../../temp/validate/mobileValidate.ejs?d=' + new Date().getTime()}).render({})
+            layerObject=layer.open({
+                shadeClose:true,
+                type: 1,
+                content: html,
+                style:"border-radius: 5vw; -webkit-border-radius: 5vw;"
+            });
+        }
+    </script>
+</body>
+</html>

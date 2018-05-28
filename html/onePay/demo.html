@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>扫码后不输出信息，直接让支付宝解码</h1>
+
+<a href="#" class="btn read">开始扫码</a>
+
+<script>
+    function ready(callback) {
+        // 如果jsbridge已经注入则直接调用
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            // 如果没有注入则监听注入的事件
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    }
+
+    ready(function() {
+        document.querySelector('.read').addEventListener('click', function() {
+            AlipayJSBridge.call('scan', {
+                type: 'qr',
+                actionType: 'scanAndRoute'
+            }, function(result) {
+                alert(JSON.stringify(result));
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <!-- UC强制全屏 -->
+        <meta name="full-screen" content="yes" />
+        <!-- QQ强制全屏 -->
+        <meta name="x5-fullscreen" content="true" />
+        <!-- UC应用模式 -->
+        <meta name="browsermode" content="application" />
+        <!-- QQ应用模式 -->
+        <meta name="x5-page-mode" content="app" />
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>搜索地址</title>
+        <!--style base-->
+        <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+        <!--本地 css-->
+        <link rel="stylesheet" type="text/css" href="../../css/maps.css" />
+    </head>
+
+    <body>
+        <div class="box">
+            <div class="contain_searchmap">
+                <div class="choicemap_navigation">
+                    <div class="navigation_l">
+                        <input type="text" name="search" id="search" value="" class="fontsize27" placeholder="查找小区/大厦/学校等" />
+                    </div>
+                    <div class="navigation_r">
+                        <span class="fontsize27" id="searchs"  >搜索</span>
+                    </div>
+                </div>
+                <div class="choicemap_content">
+                    <div class="choicemap_content_nav">
+                        <ul class="border_botomm" id="choicemap_content_ul">
+                            <li class="active" data-type='全部'>
+                                <p>全部</p>
+                            </li>
+                            <li data-type='小区'>
+                                <p>小区</p>
+                            </li>
+                            <li data-type='写字楼|大厦'>
+                                <p>大厦</p>
+                            </li>
+                            <li data-type='学校'>
+                                <p>学校</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="choicemap_main">
+                        <ul id="choicemap_main_ul"></ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <script src="../../js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.bootcss.com/template_js/0.7.1/template.min.js"></script>
+    <script id="point" type="text/html" >
+        <% for (var k in pois) { %>
+        <li data-location='<%= pois[k]["location"] %>' data-name='<%= pois[k]["name"] %>' data-address='<%= pois[k]["address"] %>' >
+            <p class="p_top"><%= pois[k]['name'] %></p>
+            <p class="p_bot"><%= pois[k]['address'] %></p>
+        </li>
+        <% } %>
+    </script>
+    <script type="text/javascript">
+        Zepto(function ($) {
+            //nav 选择
+            var location = getQueryString('location');
+            $(document).on('click', '#choicemap_content_ul li', function (e) {
+                $(this).addClass('active').siblings().removeClass('active');
+                var search = $('#search').val();
+                var keyword = '';
+                var type = $(this).data('type');
+                if(search) {
+                    get_data(location, search, type);
+                } else {
+                   get_data(location, '', type);
+                }
+            });
+            get_data(location);
+            //地址列表选择
+            $(document).on('click', '#choicemap_main_ul li', function (e) {
+                $(this).addClass('active').siblings().removeClass('active');
+                var url = 'addAddress.html?location='+$(this).data('location')+'&name='+$(this).data('name')+'&address='+$(this).data('address');
+            });
+            $('#searchs').click(function(){
+            	var search = $('#search').val();
+                var type = $(this).data('type');
+            	get_data(location, search, type);
+            })
+        });
+        function get_data(location, keywords='', types= '') {
+            var data = {}
+            data.key = "af38b10b5bf1e5fdcb380ba9a9dd3e87";
+            data.location = location;//"113.22615,23.388459";
+            data.radius = 500;
+            data.offset = 20;
+            data.extensions = "base"
+            if(keywords) {
+                data.keywords = keywords;
+            }
+            if(types && types != '全部') {
+                data.types = types;
+            }
+            $.ajax({
+                type:"GET",
+                url:"http://restapi.amap.com/v3/place/around",
+                data:data,
+                dataType:"json",
+                success: function(respon) {
+                    var tpl = $('#point').html();
+                    $('#choicemap_main_ul').html(template(tpl, respon));
+                }
+            });
+        }
+        function getQueryString(name){
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r!=null) return r[2]; return '';
+        }
+    </script>
+    </body>
+</html>

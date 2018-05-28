@@ -1,0 +1,331 @@
+html{
+    max-width: 750px; margin: 0 auto;
+    width: 100%;
+    background: #fff;
+}
+.paySuccessBox {
+    width: 92vw;
+    max-width: 690px;
+    margin: 0 auto;
+}
+.paySuccessBox>*{max-width: 690px;}
+.paySuccessBox ul:nth-child(1){   margin-bottom:8vw;   padding-bottom: 1vw;}
+.paySuccessBox ul:nth-child(1) li{text-align: center;}
+.paySuccessBox ul:nth-child(1) li:nth-child(1){text-align: right;    padding-top: 5vw;}
+.paySuccessBox ul:nth-child(1) li:nth-child(1) a{font-size: 3.2vw; color: #666666}
+.paySuccessBox ul:nth-child(1) li:nth-child(2){font-size: 7.5vw;font-weight: 600; color: #5DD9AB;height: 10.266vw;font-family:PingFang-SC-Bold;}
+.paySuccessBox ul:nth-child(1) li:nth-child(3){color:#222222; font-size:9.33333vw;   }
+.paySuccessBox ul:nth-child(1) li:nth-child(3) label{color:#222222; font-size:3.2vw; }
+.paySuccessBox ul:nth-child(1) li:nth-child(4){ font-size: 3.6vw; color:#E5004F; font-family: PingFang SC;line-height: 11.33vw;}
+.paySuccessBox ul:nth-child(1) li:nth-child(5){ text-align: center;}
+.paySuccessBox ul:nth-child(1) li:nth-child(5) button{ width:26.66vw; height:8vw; background: #E5004F; font-size: 4vw; border: 1px solid #E5004F; border-radius:1vw; -webkit-border-radius: 1vw; color:#FFFFFF; }
+.paySuccessBox ul:nth-child(1) li:nth-child(6){ color:#999999; text-align: center; font-size: 3.6vw; height:9.733vw;padding-top: 5vw;  }
+
+.paySuccessBox ul:nth-child(1) li:nth-child(7),.paySuccessBox ul li:nth-child(8),.paySuccessBox ul li:nth-child(9){ display: flex; display: -webkit-flex; justify-content: space-between; align-items: center; line-height: 10vw; -webkit-justify-content: space-between; -webkit-align-items: center; }
+.paySuccessBox ul:nth-child(1) li:nth-child(7) span:nth-child(1),
+.paySuccessBox ul li:nth-child(8) span:nth-child(1),
+.paySuccessBox ul li:nth-child(9) span:nth-child(1){ color:#999999; font-size: 4vw;   }
+.paySuccessBox ul:nth-child(1) li:nth-child(7) span:nth-child(2),
+.paySuccessBox ul li:nth-child(8) span:nth-child(2),
+.paySuccessBox ul li:nth-child(9) span:nth-child(2){ color:#222222;  font-size: 4vw;  }
+
+/*.paySuccessBox ul:nth-child(2) li{display: flex; display: -webkit-flex; justify-content: space-between; align-items: center; line-height: 10vw; -webkit-justify-content: space-between; -webkit-align-items: center;}*/
+
+/*.paySuccessBox ul:nth-child(2){padding-top:1vw; margin-bottom: 5vw;}*/
+/*.paySuccessBox ul:nth-child(2) li:nth-child(1) span:nth-child(1),*/
+/*.paySuccessBox ul:nth-child(2)  li:nth-child(2) span{ color:#999999; font-size: 4vw;   }*/
+/*.paySuccessBox ul:nth-child(2)  li:nth-child(1) span:nth-child(2){ color:#222222;  font-size: 4vw;  }*/
+
+.paySuccessBox >div.banner_img{ width: 92vw;height: 24.93vw; margin: 0 auto;}
+.paySuccessBox >div.banner_img>img{ width: 100%;}
+.paySuccessBox >footer{ text-align: center; margin:0 auto; margin-top: 7vw; }
+.paySuccessBox >footer>img{ width:51.2vw; height: 9.866vw;}
+
+.red{color:#E5004F}
+.paySuccessBox ul li span.red{color:#E5004F !important;}
+.gray{color:#999999!important;}
+
+
+
+.checkPreferentialBox{
+    max-width: 750px; margin: 0 auto;
+    width: 100%;
+    background: #fff;
+}
+
+.preferentialInfo{
+    overflow: hidden;
+    width: 7.5rem;
+    max-width: 750px;
+    margin: 0 auto;
+    background: url("../img/payment/bg_01.png") no-repeat center center;
+    background-size:cover ;
+    height: 3.9rem;
+}
+.preferentialInfo ul{
+    width: 6.88rem;
+    height: 3.32rem;
+    margin: 0.34rem auto 0;
+}
+.preferentialInfo ul li{color:#fff}
+.preferentialInfo ul li:nth-child(1){
+    height: 1.08rem;
+    line-height: 1.08rem;
+    -webkit-justify-content: flex-start;
+    -webkit-align-items: center;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+}
+.preferentialInfo ul li:nth-child(1) img{
+    width: .36rem;
+    height: .4rem;
+    padding-left:  0.44rem;
+}
+.preferentialInfo ul li:nth-child(1) span{
+    padding-left: 0.24rem;
+    color:#fff;
+}
+.preferentialInfo ul li:nth-child(2) {
+    text-indent:  0.54rem;
+    line-height: 0.56rem;
+}
+.preferentialInfo ul li:nth-child(3){
+    text-indent: 0.54rem;
+    line-height:.98rem;
+    font-size: .7rem;
+}
+.preferentialInfo ul li:nth-child(3) sup{font-size:.3rem;padding-left: .2rem;}
+.qrCodeBox{
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-end ;
+    -webkit-justify-content: flex-end ;
+    align-items: center;
+    -webkit-align-items: center;
+    height:7.72rem;
+}
+.qrCodeBox img{
+    height: 3.62rem;
+    width: 3.62rem;
+}
+.qrCodeBox p{
+    height: .37rem;
+    width: 100%;
+    text-align: center;
+    font-size: 0.2rem;
+}
+
+
+
+.receiveBox{
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 750px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: rgba(248,248,248,1);
+}
+
+.receiveBox .content{
+    width: 7.05rem;
+    margin: 0.46rem auto 0;
+    height: 7.82rem;
+    background: url("../img/recommend/bg_01.png") no-repeat center center;
+    background-size:cover ;
+    overflow: hidden;
+}
+
+.receiveBox .content section:nth-child(1){
+    width: 5.09rem;
+    margin: 0.72rem auto 0;
+}
+
+.receiveBox .content section:nth-child(1) p{ color:#CD1233;text-align: center; font-weight: 600}
+.receiveBox .content section:nth-child(1) p:nth-child(1),.receiveBox .content section:nth-child(1) p:nth-child(2){  line-height: 0.44rem;font-size:0.35rem;}
+.receiveBox .content section:nth-child(1) p:nth-child(3) span{  line-height: 1.81rem;font-size:1.5rem;}
+.receiveBox .content section:nth-child(1) p:nth-child(3) sub{  line-height: 1.81rem;font-size:0.45rem;}
+.receiveBox .content section:nth-child(1) p{ color:#CD1233;}
+.receiveBox .content section:nth-child(2){
+    padding-top: 0.94rem;
+    width: 5.26rem;
+    margin:0 auto 0;
+}
+
+.receiveBox .content section:nth-child(2) li.tel input{ width:5.18rem; border:2px solid #fec37d; border-radius: 5px;
+    height: .84rem; text-indent: .5rem; color:#999999; font-size: .3rem;}
+
+.receiveBox .content section:nth-child(2) li.codeBox{margin-top: .24rem ;display: flex; display: -webkit-flex; justify-content: space-between;-webkit-justify-content: space-between; align-items: center; -webkit-align-items: center;}
+.receiveBox .content section:nth-child(2) li.codeBox input{ width:3.02rem; border:2px solid #fec37d; border-radius: 5px;
+    height: .84rem; text-indent: .5rem; color:#999999; font-size: .3rem;}
+.receiveBox .content section:nth-child(2) li.codeBox button{width: auto;    height: 0.84rem; padding: 0 10px;
+    line-height: 0.84rem; font-size: 0.3rem; border-radius: .1rem;-webkit-border-radius: .1rem;  border: none; background: #ffa02f; color:#fff;white-space: nowrap;}
+
+.receiveBox .content section:nth-child(2) li.submit{text-align: center;}
+.receiveBox .content section:nth-child(2) li.submit button{
+    margin-top:0.93rem;
+    width: 3.99rem;
+    height: .9rem;
+    background: #c1142f;
+    border: 1px solid #c1142f;
+    color:#ffffae;
+    border-radius: .1rem;
+    font-size: 0.35rem;
+    background: -webkit-linear-gradient( #D71137, #BD152D); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient( #D71137, #BD152D); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(  #D71137, #BD152D); /* Firefox 3.6 - 15 */
+    background: linear-gradient(  #D71137, #BD152D); /* 标准的语法 */
+    box-shadow: 0px 6px 9px rgba(169,4,28,0.45);
+    -webkit-box-shadow: 0px 6px 9px rgba(169,4,28,0.45);
+}
+
+
+.receiveBox footer{
+   background: #FFC98E;
+    width: 6.07rem;
+    margin: 0.5rem auto;
+    padding:.52rem .41rem;
+    border-radius: .1rem;
+}
+.receiveBox footer h6,.receiveBox footer p{
+    color:#BF152E;
+    font-weight: bold;
+    font-size: 0.26rem;
+    line-height: .4rem;
+}
+
+
+.receiveSucccessBox{
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 750px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: rgba(248,248,248,1);
+}
+.receiveSucccessBox .content{
+    width: 7.05rem;
+    margin: 0.46rem auto 0;
+    height: 7.82rem;
+    background: url("../img/recommend/bg_01.png") no-repeat center center;
+    background-size:cover ;
+    overflow: hidden;
+}
+
+.receiveSucccessBox .content ul{
+    width:5.1rem;
+    margin: 0 auto;
+    padding-top: .15rem;
+}
+
+.receiveSucccessBox .content ul .displayNone{
+    display: none;
+}
+
+.receiveSucccessBox .content ul .receiveed{
+    text-align: center;
+    font-size:.4rem;
+    padding: 1.06rem  1.16rem;
+    width: 2.87rem;
+    line-height: .87rem;
+    color:#CD1233;
+    font-weight: 600;
+}
+.receiveSucccessBox .content ul .receiveed.lineHeightAuto{ line-height: unset}
+.receiveSucccessBox .content ul .receive{
+    text-align: center;
+    font-size:.4rem;
+    width: 5.1899rem;
+    height:2.99rem;
+    color:#CD1233;
+    font-weight: 600;
+}
+
+.receiveSucccessBox .content ul .receive p:nth-child(1) { font-size: .35rem; color:#CD1233; padding:.57rem 0 .32rem;font-weight: 600;}
+.receiveSucccessBox .content ul .receive p:nth-child(2) {font-size: .35rem; color:#CD1233;font-weight: 600;}
+.receiveSucccessBox .content ul .receive  p:nth-child(3){font-size: .35rem; color:#CD1233;font-weight: 600;}
+.receiveSucccessBox .content ul .receive p:nth-child(3) span{ color:#CD1233;  line-height: 1.41rem;font-size:1.5rem;}
+.receiveSucccessBox .content ul .receive p:nth-child(3) sub{  line-height: 1.41rem;font-size:0.45rem;}
+
+.receiveSucccessBox .content ul .submit{text-align: center;}
+.receiveSucccessBox .content ul .submit button{
+    text-align: center;
+    font-size:.4rem;
+    width: 3.99rem;
+    height: .9rem;
+    background: #c1142f;
+    border: 1px solid #c1142f;
+    color:#ffffae;
+    border-radius: .1rem;
+    margin-top: 1.98rem;
+    font-size: 0.35rem;
+    background: -webkit-linear-gradient( #D71137, #BD152D); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient( #D71137, #BD152D); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(  #D71137, #BD152D); /* Firefox 3.6 - 15 */
+    background: linear-gradient(  #D71137, #BD152D); /* 标准的语法 */
+    box-shadow:0px 6px 9px rgba(169,4,28,0.45);
+    -webkit-box-shadow: 0px 6px 9px rgba(169,4,28,0.45);
+}
+
+.receiveSucccessBox .msg{ text-align: center; color:#fff; padding:.29rem 0; font-size: .3rem }
+.receiveSucccessBox .imageBox{height:13.92rem;background:rgba(255,255,255,1);border-radius: 5px; margin: 0 auto .76rem;
+  text-align: center;  width: 6.9rem;}
+.receiveSucccessBox .imageBox p{font-size: .4rem; color:#CD1233; padding: .46rem 0;}
+.receiveSucccessBox .imageBox img{
+    height: 10.64rem;
+    width: 5.6rem;
+}
+
+
+
+.receiveSucccessBox footer{
+    background: #FFC98E;
+    width: 6.07rem;
+    margin: 0.5rem auto;
+    padding:.52rem .41rem;
+    border-radius: .1rem;
+}
+.receiveSucccessBox footer h6,.receiveSucccessBox footer p{
+    color:#BF152E;
+    font-weight: bold;
+    font-size: 0.26rem;
+    line-height: .4rem;
+}
+
+.receiveSucccessBox .content ul .receive.ok{
+    height: 3.21rem;
+}
+
+.receiveSucccessBox .content ul .receiveed.msg{
+    height: 1.11rem;
+}
+
+
+
+.loseEfficacyBox {
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 750px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: rgba(255, 255,255, 1);
+}
+.loseEfficacyBox .content img{width: 100%}
+
+
+.applyBox{
+    height: 100vh; overflow: hidden;
+    width: 100vw; max-width: 750px;
+    margin: 0 auto;
+    background: -webkit-linear-gradient(#28803A,#2AA33A); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#28803A,#2AA33A); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#28803A,#2AA33A); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#28803A,#2AA33A); /* 标准的语法 */
+}
+
+.applyBox .content{
+
+}

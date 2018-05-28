@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!-- UC强制全屏 -->
+		<meta name="full-screen" content="yes" />
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true" />
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application" />
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app" />
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>一码付支付</title>
+		<!--style base-->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../js/layer/mobile/need/layer.css">
+		<!--本地 css-->
+		<link rel="stylesheet" type="text/css" href="../../css/payment.css" />
+		<style>
+			/*@media screen and (orientation : landscape) {*/
+				/*html {*/
+					/*width: 100vh;*/
+					/*height: 100vw;*/
+					/*transform: rotate(90deg);*/
+					/*transform-origin: 50vw 50vw;*/
+				/*}*/
+				/*.contain_payment{height: 100vw; }*/
+			/*}*/
+		</style>
+
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="contain_payment">
+				<form>
+					<!--<h1 class="top_title">小龟支付</h1>-->
+					<div class="store_content">
+						<p class="store_name fontsize30"><strong class="fontsize35">付款给</strong>店铺名称</p>
+						<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524213956254&di=3fb66a76d8389294283ff6714162ac28&imgtype=0&src=http%3A%2F%2Fimgqn.koudaitong.com%2Fupload_files%2F2015%2F03%2F19%2FFgGuemyz9vGjlRqZmeql_cPR4XlC.jpg" class="store_img" />
+					</div>
+					<div class="payment_sprice_box">
+						<p class="pay_title">金额</p>
+						<div class="sprice_content">
+							<span>￥</span>
+							<p class="inputNumber on">
+								<span id="input_sprice1"  readonly="readonly" onfocus='this.blur();'  style="width: 100%;height:14vw; display: block;text-align: left;"></span>
+								<input type="hidden" name="price" value="" readonly="readonly" onfocus='this.blur();' max="50000" min="0.01" id="input_sprice" placeholder="输入金额" />
+							</p>
+						</div>
+					</div>
+
+
+					<div class="payment_deductible">
+						<p class="deductible_top">选择优惠(龟米余额0)</p>
+						<div class="deductible_bot" id="choice_gcoin" onclick="choiceGcoin()">
+							<div>
+								<span class="span_l color_pink fontsize27">优惠50元</span>
+								<span class="span_l color_pink fontsize27">优惠50元</span>
+							</div>
+							<!--<span class="span_l color_999 fontsize30">暂无优惠</span>-->
+							<span class="span_r color_999 fontsize27">
+								-50龟米
+								<img src="../../img/payment/acquire.png">
+							</span>
+						</div>
+						<!--<p class="span_l"><i class="fl"></i>龟米抵扣<span style="color: #999;">(余额<span id="guimi_currency">50</span>)</span></p>
+						<div class="span_r">
+							<input type="number" placeholder="0" id="input_integral" class="input_integral bord-radiu5" oninput="OnInput (event)" onpropertychange="OnPropChanged (event)"/>
+							<span class="color_pink span_sprice">-￥30</span>
+							<input type="checkbox" class="myradio" id="btn_checkbox"/>
+							<label class="label_radio"></label>
+						</div>-->
+					</div>
+					<div class="amount_payment">
+						<p class="fontsize100"><sup class="fontsize50">￥</sup><span id="payMoney">0.00</span></p>
+					</div>
+					<div class="buttom_sub">
+						<!--0表示新用户未绑定手机号，1直接跳转到交易已完成页面-->
+						<button class="btn_submit" type="button" onclick="checkMoney()">付款</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--选择金币悬浮窗-->
+		<div class="park_bg" id="park_bg"></div>
+		<div class="choice_guibi" id="choice_guibi">
+			<div class="gold_coin_top">
+				<p class="p_left"></p>
+				<p class="p_center fontsize35">龟米优惠</p>
+				<p class="p_right fontsize30 btn_parkclose">确定</p>
+			</div>
+			<div class="gold_coin_content_list">
+				<div class="gold_coin_content">
+					<div class="coin_content_l">
+						<input type="checkbox"  class="myradio" id="radio1"  name="radios"/>
+						<label class="label_radio"></label>
+					</div>
+					<div class="coin_content_r" onclick="setCheckBox(this)" >
+						<p class="p_top fontsize35">小龟支付到店优惠</p>
+						<p class="p_bot fontsize30">龟米余额50，最高优惠50元</p>
+					</div>
+				</div>
+				<div class="gold_coin_content">
+					<div class="coin_content_l">
+						<input  type="checkbox"  onclick="return false;" checked  class="myradio readyOnly" id="radio2" name="radios" />
+						<label class="label_radio"></label>
+					</div>
+					<div class="coin_content_r" >
+						<p class="p_top fontsize35">新用户红包</p>
+						<p class="p_bot fontsize30">满10元减5元</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--弹窗   
+		*支付金额全部被金币抵消为0时
+		* 调用shownoprice()即可
+		* -->
+		<div class="park_bg2" id="park_bg2"></div>
+		<div class="choice_noprice" id="choice_noprice">
+			<div class="gold_coin_top">
+				<p class="p_left btn_parkclose"><img src="../../img/payment/close.png"/></p>
+				<p class="p_center fontsize35">确认付款</p>
+				<p class="p_right fontsize30"></p>
+			</div>
+			<div class="gold_coin_content_list">
+				<div class="gold_coin_content_top">￥0</div>
+				<div class="gold_coin_content">
+					<p>
+						<span class="span_l fontsize30">订单金额</span>
+						<span class="span_r fontsize30">50</span>
+					</p>
+					<p>
+						<span class="span_l fontsize30">龟米优惠</span>
+						<span class="span_r fontsize30">-50</span>
+					</p>
+				</div>
+				<div class="btn_box">
+					<button class="border-radius10">确认</button>
+				</div>
+			</div>
+		</div>
+		<!--<script src="../../js/zepto.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--新建键盘-->
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/layer/mobile/layer.js"></script>
+		<script src="../../js/moneyKeyBoard.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/payment.js" type="text/javascript" charset="utf-8"></script>
+		<!--错误提示-->
+		<script src="../../js/promptpark.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/fastclick.js"></script>
+		<script>
+            window.addEventListener('load', function() {
+                new FastClick(document.body);
+            }, false);
+		</script>
+		<script>
+			$("#input_sprice1").moneyKeyBoard({
+				deleteCallBack:function(){
+                   var newstr= $("#input_sprice").val().substr(0,$("#input_sprice").val().length-1)
+                    var regStrs = [
+                        ['^0(\\d+)$', '$1'], //禁止录入整数部分两位以上，但首位为0
+                        ['[^\\d\\.]+$', ''], //禁止录入任何非数字和点
+                        ['\\.(\\d?)\\.+', '.$1'], //禁止录入两个以上的点
+                        ['^(\\d+\\.\\d{2}).+', '$1'] //禁止录入小数点后两位以上
+                    ];
+                    for(i = 0; i < regStrs.length; i++) {
+                        var reg = new RegExp(regStrs[i][0]);
+                        newstr = newstr.replace(reg, regStrs[i][1]);
+                    }
+                    if(newstr.length > 2) {
+                        if(newstr < 0.2) {
+                            showError('金额不能小于0.2，请重新输入');
+                            newstr = '';
+                        } else if(newstr > 50000) {
+                            showError('金额不能大于50000，请重新输入');
+                            newstr = '50000';
+                        }
+                    }
+                    if(newstr==""){
+                        $(".inputNumber").addClass("on")
+                    }
+                    $("#input_sprice").val(newstr)
+                    $("#input_sprice1").html(newstr)
+				},
+                ClickCallBack:function(){
+                    var str=$(this).html();
+                    var val=$("#input_sprice").val()
+                    if((val==""&&str=="0")||(val==""&&str==".")){
+                        $("#input_sprice").val("0.")
+                        $("#input_sprice1").html("0.")
+                    }else{
+                        $("#input_sprice").val( $("#input_sprice").val()+str)
+                        $("#input_sprice1").html($("#input_sprice").val())
+					}
+
+                   var newstr= $("#input_sprice").val()
+
+                    var regStrs = [
+                        ['^0(\\d+)$', '$1'], //禁止录入整数部分两位以上，但首位为0
+                        ['[^\\d\\.]+$', ''], //禁止录入任何非数字和点
+                        ['\\.(\\d?)\\.+', '.$1'], //禁止录入两个以上的点
+                        ['^(\\d+\\.\\d{2}).+', '$1'] //禁止录入小数点后两位以上
+                    ];
+                    for(i = 0; i < regStrs.length; i++) {
+                        var reg = new RegExp(regStrs[i][0]);
+                        newstr = newstr.replace(reg, regStrs[i][1]);
+                    }
+                    if(newstr.length > 2) {
+                        if(newstr < 0.2) {
+                            showError('金额不能小于0.2，请重新输入');
+                            newstr = '';
+                        } else if(newstr > 50000) {
+                            showError('金额不能大于50000，请重新输入');
+                            newstr = '50000';
+                        }
+                    }
+                    console.info(newstr)
+                    if(newstr!=""){
+                    $(".inputNumber").removeClass("on")
+					}
+                    $("#input_sprice").val(newstr)
+                    $("#input_sprice1").html(newstr)
+				}
+			});
+			function checkMoney(){
+			    if($("#input_sprice").val()==""||$("#input_sprice").val()=="0"||$("#input_sprice").val()=="0."){
+                    showError("金额输入错误！")
+					return false;
+				}else if($("#payMoney").text()==""||$("#payMoney").text()=="0"||$("#payMoney").text()=="0.00"){
+                    shownoprice()
+                }else {
+			        //成功
+                    //loading带文字
+                    layer.open({
+                        type: 2
+                        ,content: '支付中...'+ document.getElementById("input_sprice").value
+                    });
+
+				}
+			}
+			function setCheckBox(eve){
+			    var　checkBox=$(eve).parents(".gold_coin_content").find("input[type='checkbox']")
+                if($(checkBox).is(":checked")){
+					$(checkBox).prop("checked", false);
+                }else{
+                    $(checkBox).prop("checked", true);
+                }
+			}
+
+		</script>
+
+	</body>
+
+</html>

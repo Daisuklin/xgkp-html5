@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!-- UC强制全屏 -->
+		<meta name="full-screen" content="yes" />
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true" />
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application" />
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app" />
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>添加、编辑地址</title>
+		<!--style base-->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<!--本地 css-->
+		<link rel="stylesheet" type="text/css" href="../../css/address.css" />
+	</head>
+
+	<body>
+		<div class="box">
+			<!--添加地址 begin-->
+			<div class="contain_addAdress">
+				<div class="addAdress_list" style="display: none;">
+					<h2>添加收件信息</h2>
+					<form>
+						<div class="adress_list_content addad_name">
+							<span class="fontsize30">姓名</span><label><input type="text" class="input_name fontsize27" placeholder="收货人姓名" /></label>
+						</div>
+						<div class="adress_list_content addad_phone">
+							<span class="fontsize30">电话</span><label><input type="text" class="input_phone fontsize27" placeholder="收货人手机号码" /></label>
+						</div>
+						<div class="adress_list_content addad_ad">
+							<span class="fontsize30">地址</span>
+							<!--未选择地址-->
+							<img src="../../img/address/add.png" class="addad_ad_img" />
+							<span style="color: #999999;padding-left: 5px;" class="fontsize27">选择地址</span>
+							<!--已选择地址-->
+							<!--<span style="color: #999;" class="fontsize27">北京市东城区 国家历史博物馆</span>-->
+						</div>
+						<div class="addad_admore">
+							<span class="fontsize27">详细地址</span><input class="input_admore fontsize30" placeholder="选填" />
+						</div>
+						<div class="adress_list_content addad_defaultad">
+							<label><input type="checkbox" checked/><span class="span_radio"></span><span class="fontsize24" style="padding-left: 15px;color: #444;">默认地址</span></label>
+						</div>
+						<div class="addsave">
+							<input type="submit" value="保存" class="but_addsave" />
+						</div>
+
+					</form>
+				</div>
+			</div>
+			<!--添加地址 end-->
+			<!--编辑地址 begin-->
+			<div class="contain_editAdress">
+				<div class="addAdress_list">
+					<h2>编辑收件信息</h2>
+					<form>
+						<div class="adress_list_content addad_name">
+							<span class="fontsize30">姓名</span><label><input type="text" class="input_name fontsize27" placeholder="收货人姓名" /></label>
+						</div>
+						<div class="adress_list_content addad_phone">
+							<span class="fontsize30">电话</span><label><input type="text" class="input_phone fontsize27" placeholder="收货人手机号码" /></label>
+						</div>
+						<div class="adress_list_content addad_ad" onclick="javascript:window.location.href='maps.html'" >
+							<span class="fontsize30">地址</span>
+							<!--未选择地址-->
+							<img src="../../img/address/add.png" class="addad_ad_img" />
+                                                        <span style="color: #999999;padding-left: 5px;" class="fontsize27"  >选择地址</span>
+							<!--已选择地址-->
+							<!--<span style="color: #999;" class="fontsize27">北京市东城区 国家历史博物馆</span>-->
+						</div>
+						<div class="addad_admore">
+							<span class="fontsize27">详细地址</span><input class="input_admore fontsize30" placeholder="选填" />
+						</div>
+						<div class="adress_list_content addad_defaultad">
+							<label><input type="checkbox" checked/><span class="span_radio"></span><span class="fontsize24" style="padding-left: 15px;color: #444;">默认地址</span></label>
+						</div>
+						<div class="addsave">
+							<input type="submit" value="保存" class="but_addsave" />
+						</div>
+
+					</form>
+				</div>
+			</div>
+			<!--编辑地址 end-->
+		</div>
+		<!--
+			提示弹窗用法
+			onclick="showError('你是猪')"
+		-->
+		<script src="../../js/promptpark.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
